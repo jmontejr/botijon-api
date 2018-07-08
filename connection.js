@@ -5,10 +5,10 @@ var connection = mysql.createPool({
     // user: 'root',
     // password: '',
     // database: 'botijon'
-    host: 'databases.000webhost.com',
-    user: 'id2500549_botijonadmin',
+    host: 'mysql.hostinger.com.br',
+    user: 'u834126065_botij',
     password: 'BotijOnAppKey123',
-    database: 'id2500549_botijondb'
+    database: 'u834126065_botij'
 });
 
 module.exports = connection;
