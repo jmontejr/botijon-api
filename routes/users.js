@@ -70,14 +70,14 @@ router.post('/api/users/create/', function(req, res, next) {
       res.json({
         status: 'error',
         data: err,
-        message: 'Cannot possible register the user'
+        message: 'Could not register user'
       });
     }
     else{
       res.json({
         status: 'success',
         data: req.body,
-        message: 'Register successfully'
+        message: 'Registered successfully'
       });
     }
   });

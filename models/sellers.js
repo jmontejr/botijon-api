@@ -14,13 +14,16 @@ var Sellers = {
         return db.query("select * from sellers where email=? and password=?", [email, password], callback);
     },
     addSeller: function (Seller, callback) {
-        return db.query("insert into sellers(name, email, password, cpfcnpj, address) values(?,?,?,?,?)", [Seller.name, Seller.email, Seller.password, Seller.cpfcnpj, Seller.address], callback);
+        return db.query("insert into sellers(name, email, password, cpfcnpj) values(?,?,?,?)", [Seller.name, Seller.email, Seller.password, Seller.cpfcnpj], callback);
     },
     deleteSeller: function (id, callback) {
         return db.query("delete from sellers where id=?", [id], callback);
     },
-    updateSeller: function (id, Seller, callback){
-        return db.query("update sellers set name=?, address=? where id=?", [Seller.name, Seller.address], callback);
+    changeNameSeller: function (id, Seller, callback){
+        return db.query("update sellers set name=? where id=?", [Seller.name], callback);
+    },
+    changeAddressSeller: function (id, Seller, callback) {
+      return db.query("update sellers set address_id=? where id=?", [Seller.address_id], callback);  
     },
     changePasswordSeller: function (id, Seller, callback) {
         return db.query("update sellers set password=? where id=?", [Seller.password, id], callback);

@@ -94,14 +94,14 @@ router.post('/api/sellers/create/', function (req, res, next) {
             res.json({
                 status: 'error',
                 data: err,
-                message: 'Cannot possible register the seller'
+                message: 'Could not register seller'
             });
         }
         else {
             res.json({
                 status: 'success',
                 data: req.body,
-                message: 'Register successfully'
+                message: 'Seller registered successfully'
             });
         }
     });
@@ -110,7 +110,6 @@ router.post('/api/sellers/create/', function (req, res, next) {
 // DELETE SELLER ROUTES
 router.delete('/api/sellers/delete/:id', function (req, res, next) {
     sellers.deleteSeller(req.params.id, function (err, count) {
-        console.log(count)
         if (err || count.affectedRows == 0) {
             res.json({
                 status: 'error',
@@ -129,23 +128,62 @@ router.delete('/api/sellers/delete/:id', function (req, res, next) {
 });
 
 // UPDATE SELLER ROUTES
-router.put('/api/sellers/update/:id', function (req, res, next){
-    sellers.updateSeller(req.params.id, req.body, function (err, count){
-        if(err || (count.affectedRows == 0)) {
-            res.json({
-                status: 'error',
-                data: err,
-                message: 'Cannot possible update the seller'
-            });
-        }
-        else {
-            res.json({
-                status: 'success',
-                data: count,
-                message: 'Seller update successfully'
-            });
-        }
-    });
+router.put('/api/sellers/changename/:id', function (req, res, next){
+    let.condition = !!req.body.name;
+    if (!condition) {
+        res.status(500).json({
+            status: 'error',
+            data: {},
+            message: 'Cannot possible update the seller'
+        });
+    }
+    else {
+        sellers.changeNameSeller(req.params.id, req.body, function (err, count){
+            if(err || (count.affectedRows == 0)) {
+                res.json({
+                    status: 'error',
+                    data: err,
+                    message: 'Cannot possible update the seller'
+                });
+            }
+            else {
+                res.json({
+                    status: 'success',
+                    data: count,
+                    message: 'Seller update successfully'
+                });
+            }
+        });
+    }
+});
+
+router.put('/api/sellers/changeaddress/:id', function(req, res, next){
+    let.condition = !!req.body.address_id;
+    if(!condition){
+        res.status(500).json({
+            status: 'error',
+            data: {},
+            message: 'Cannot possible update the seller'
+        });
+    }
+    else{
+        sellers.changeAddressSeller(req.params.id, req.body, function(err, count){
+            if(err || (count.affectedRows == 0)) {
+                res.json({
+                    status: 'error',
+                    data: {},
+                    message: 'Cannot possible update the seller'
+                });
+            }
+            else{
+                res.json({
+                    status: 'success',
+                    data: count,
+                    message: 'Seller update successfully'
+                });
+            }
+        });
+    }
 });
 
 router.put('/api/sellers/changepassword/:id', function (req, res, next) {

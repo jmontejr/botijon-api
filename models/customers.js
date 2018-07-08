@@ -19,7 +19,7 @@ var Customers = {
     deleteCustomer: function (id, callback) {
         return db.query("delete from customers where id=?", [id], callback);
     },
-    updateCustomer: function (id, Customer, callback) {
+    changeNameCustomer: function (id, Customer, callback) {
         return db.query("update customers set name=? where id=?", [Customer.name, id], callback);
     },
     changePasswordCustomer: function (id, Customer, callback) {
