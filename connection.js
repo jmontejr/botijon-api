@@ -14,7 +14,7 @@ var connection = mysql.createPool({
     // database: 'u834126065_botij'
 
     // 000Webhost
-    host: 'databases-auth.000webhost.com',
+    host: 'databases.000webhost.com',
     user: 'id2500549_botijonadmin',
     password: 'BotijOnAppKey123',
     database: 'id2500549_botijondb'
