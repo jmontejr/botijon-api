@@ -9,7 +9,8 @@ var connection = mysql.createPool({
 
     // Hostinger
     // host: 'sql31.hostinger.com.br',
-    host: 'sql31.main-hosting.eu',
+    // host: 'sql31.main-hosting.eu',
+    host: 'mysql.hostinger.com.br',
     user: 'u834126065_botij',
     password: 'BotijOnAppKey123',
     database: 'u834126065_botij'
