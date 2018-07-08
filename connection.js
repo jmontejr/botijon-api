@@ -5,7 +5,7 @@ var connection = mysql.createPool({
     // user: 'root',
     // password: '',
     // database: 'botijon'
-    host: 'mysql.hostinger.com.br',
+    host: 'http://sql31.hostinger.com.br',
     user: 'u834126065_botij',
     password: 'BotijOnAppKey123',
     database: 'u834126065_botij'
