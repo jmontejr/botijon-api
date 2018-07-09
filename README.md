@@ -495,3 +495,78 @@ Status | Response
 success|`status: 'success', message: 'Product status update successfully', 'data': output`
 error  |`status: 'error', message: 'Could not possible update the product status', 'data': {}`
 
+## Addresses
+
+#### Get All Addresses
+
+`GET: /addresses`
+
+Status | Response
+-------|----------
+success|`status: 'success', message: 'Returned all addresses', 'data': output`
+error  |`status: 'error', message: 'There arent addresses', 'data': {}`
+
+#### Get one address by address, number and cep
+
+`GET: /addresses/getid/:address`
+
+params  | type
+--------|------
+:address|object json
+
+Example:  
+* /addresses/getid/{"address":string,"number":number,"cep":string}
+  1. /addresses/getid/{"address":"rua passarinho","number":"21","cep":"54331002"}
+
+Status | Response
+-------|----------
+success|`status: 'success', message: 'Return Address id', 'data': output`
+error  |`status: 'error', message: 'This address is not found', 'data': {}`
+
+#### Create a new address
+
+`POST: /addresses/create`
+
+```
+Body:
+{
+	"address": string,
+	"number": string or number,
+	"neighborhood": string,
+	"city": string,
+	"state": string,
+	"cep": string,
+	"reference_point": string //can be null
+}
+```
+
+Status | Response
+-------|----------
+success|`status: 'success', message: 'Address registered successfully', 'data': output`
+error  |`status: 'error', message: 'Could not register the address', 'data': {}`
+
+#### Update the Address
+
+`PUT: /addresses/update/:id`
+
+params | type
+-------|------
+:id    |number
+
+```
+Body:
+{
+	"address": string,
+	"number": string or number,
+	"neighborhood": string,
+	"city": string,
+	"state": string,
+	"cep": string,
+	"reference_point": string //can be null
+}
+```
+
+Status | Response
+-------|----------
+success|`status: 'success', message: 'Address update successfully', 'data': output`
+error  |`status: 'error', message: 'Could not possible update the address', 'data': {}`

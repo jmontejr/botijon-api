@@ -9,14 +9,14 @@ router.get('/api/addresses/', function(req, res, next){
             res.json({
                 status: 'error',
                 data: {},
-                message: 'There arent address'
+                message: 'There arent addresses'
             });
         }
         else{
             res.json({
                 status: 'success',
                 data: rows,
-                message: 'Returned all address'
+                message: 'Returned all addresses'
             });
         }
     });
@@ -91,8 +91,8 @@ router.put('/api/addresses/update/:id', function(req, res, next){
     });
 });
 
-// DELETE REQUEST ROUTES
-router.delete('/api/requests/:id', function (req, res, next) {
+// DELETE ADDRESSES ROUTES
+router.delete('/api/address/:id', function (req, res, next) {
     addresses.deleteAddress(req.params.id, function (err, count) {
         if (err) {
             res.json({
