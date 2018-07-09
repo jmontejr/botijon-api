@@ -73,7 +73,7 @@ router.get('/api/products/description/:description', function(req, res, next){
             res.json({
                 status: 'success',
                 data: rows,
-                message: 'Returned one product'
+                message: 'Returned all products'
             });
         }
     });
@@ -126,14 +126,14 @@ router.get('/api/products/availabletypes/:availabletypes', function(req, res, ne
             res.json({
                 status: 'error',
                 data: {},
-                message: 'No products available of this type'
+                message: 'There arent products this status of this type'
             });
         }
         else{
             res.json({
                 status: 'success',
                 data: rows,
-                message: 'Returned all products available of this type'
+                message: 'Returned all products with this status of this type'
             });
         }
     });
