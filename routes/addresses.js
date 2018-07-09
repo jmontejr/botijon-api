@@ -4,7 +4,7 @@ var addresses = require('../models/addresses');
 
 // GET ADDRESS ROUTES
 router.get('/api/addresses/', function(req, res, next){
-    addresses.getAllAddress(function(err, rows) {
+    addresses.getAllAdresses(function(err, rows) {
         if (err || (rows.length == 0)){
             res.json({
                 status: 'error',
