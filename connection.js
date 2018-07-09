@@ -7,19 +7,10 @@ var connection = mysql.createPool({
     // password: '',
     // database: 'botijon'
 
-    // Hostinger
-    host: 'sql31.hostinger.com.br/phpmyadmin',
-    // host: 'sql31.main-hosting.eu',
-    // host: 'mysql.hostinger.com.br',
-    user: 'u834126065_botij',
-    password: 'BotijOnAppKey123',
-    database: 'u834126065_botij'
-
-    // 000Webhost
-    // host: 'databases.000webhost.com',
-    // user: 'id2500549_botijonadmin',
-    // password: 'BotijOnAppKey123',
-    // database: 'id2500549_botijondb'
+    host: 'jsftj8ez0cevjz8v.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    user: 'iv1f8j4s0ax3g5tc',
+    password: 'ldqq85lgwq4d35p7',
+    database: 'ixfppftl25uv9bfm'
 });
 
 module.exports = connection;
