@@ -7,10 +7,10 @@ var connection = mysql.createPool({
     // password: '',
     // database: 'botijon'
 
-    host: 'jsftj8ez0cevjz8v.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-    user: 'iv1f8j4s0ax3g5tc',
-    password: 'ldqq85lgwq4d35p7',
-    database: 'ixfppftl25uv9bfm'
+    host: 'g3v9lgqa8h5nq05o.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    user: 'b411pshuob97lls2',
+    password: 'efudapjg52q6raio',
+    database: 'xu1xnwdxpxu6ov5p'
 });
 
 module.exports = connection;
