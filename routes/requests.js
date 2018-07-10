@@ -35,7 +35,7 @@ router.get('/api/requests/:id', function(req, res, next) {
             res.json({
                 status: 'success',
                 data: rows,
-                message: 'Return Address id'
+                message: 'Returned one request'
             });
         }
     });

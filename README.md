@@ -570,3 +570,168 @@ Status | Response
 -------|----------
 success|`status: 'success', message: 'Address update successfully', 'data': output`
 error  |`status: 'error', message: 'Could not possible update the address', 'data': {}`
+
+## Requests
+
+#### Get All Requests
+
+`GET: /requests`
+
+Status | Response
+-------|----------
+success|`status: 'success', message: 'Returned all requests', 'data': output`
+error  |`status: 'error', message: 'There arent requests found', 'data': {}`
+
+#### Get One Request by Id
+
+`GET: /requests/:id`
+
+params | type
+-------|------
+:id    |number
+
+Status | Response
+-------|----------
+success|`status: 'success', message: 'Returned one request', 'data': output`
+error  |`status: 'error', message: 'There arent requests found', 'data': {}`
+
+#### Create a new Request
+
+`POST: /requests/create`
+
+```
+Body:
+{
+	"customer_id": number,
+	"product_id": number,
+	"quantity": number
+}
+```
+
+Status | Response
+-------|----------
+success|`status: 'success', message: 'Request registered successfully', 'data': output`
+error  |`status: 'error', message: 'Could not register the request', 'data': {}`
+
+#### Update the request
+
+`PUT: /requests/update/:id`
+
+params | type
+-------|------
+:id    |number
+
+```
+Body:
+{
+	"quantity": number
+}
+```
+
+Status | Response
+-------|----------
+success|`status: 'success', message: 'Request update successfully', 'data': output`
+error  |`status: 'error', message: 'Could not possible update the request', 'data': {}`
+
+## Payments
+
+#### Get All Payments
+
+`GET: /payments`
+
+Status | Response
+-------|----------
+success|`status: 'success', message: 'Returned all payments', 'data': output`
+error  |`status: 'error', message: 'There arent payments', 'data': {}`
+
+#### Get one Payment by id
+
+`GET: /payments/:id`
+
+params | type
+-------|------
+:id    |number
+
+Status | Response
+-------|----------
+success|`status: 'success', message: 'Returned one payment', 'data': output`
+error  |`status: 'error', message: 'There arent payments', 'data': {}`
+
+#### Get all payments per status and type
+
+`GET: /payments/typestatus/:payment`
+
+params   | type
+---------|------
+:payment |object json
+
+Example:
+* /payments/typestatus/{"payment_type":string,"status":string}
+	* payment_type:
+		1. can be "dinheiro" or "cartao"
+	* status:
+		1. can be "success", "waiting" or "failed"
+
+Status | Response
+-------|----------
+success|`status: 'success', message: 'Returned all payments type and status', 'data': output`
+error  |`status: 'error', message: 'There arent payments', 'data': {}`
+
+#### Create a new payment
+
+`POST: /payments/create/`
+
+```
+Body:
+{
+	"value": double,
+	payment_type: string, //can be "dinheiro" or "cartao"
+	address_id: number,
+	status: string // can be "success", "waiting" or "failed"
+}
+```
+
+Status | Response
+-------|----------
+success|`status: 'success', message: 'Payment registered successfully', 'data': output`
+error  |`status: 'error', message: 'Could not possible register the payment', 'data': {}`
+
+#### Change value of payment
+
+`PUT: /payments/changevalue/:id`
+
+params | type
+-------|------
+:id    |number
+
+```
+Body:
+{
+	"value": double
+}
+```
+
+Status | Response
+-------|----------
+success|`status: 'success', message: 'Payment value update successfully', 'data': output`
+error  |`status: 'error', message: 'Could not possible update the payment value', 'data': {}`
+
+#### Change status of payment
+
+`PUT: /payments/changestatus/:id`
+
+params | type
+-------|------
+:id    |number
+
+```
+Body:
+{
+	"status": string
+}
+```
+
+Status | Response
+-------|----------
+success|`status: 'success', message: 'Status payment update successfully', 'data': output`
+error  |`status: 'error', message: 'Could not possible update the payment status', 'data': {}`

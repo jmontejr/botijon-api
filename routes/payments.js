@@ -89,7 +89,7 @@ router.post('/api/payments/create/', function (req, res, next) {
 });
 
 // UPDATE PAYMENTS ROUTES
-router.put('/api/payments/changevalue/:value', function (req, res, next) {
+router.put('/api/payments/changevalue/:id', function (req, res, next) {
     payments.changePaymentValue(req.params.id, req.body, function (err, count) {
         let condition = !!req.body.value;
         if (!condition) {
@@ -119,7 +119,7 @@ router.put('/api/payments/changevalue/:value', function (req, res, next) {
     });
 });
 
-router.put('/api/payments/changestatus/:status', function (req, res, next) {
+router.put('/api/payments/changestatus/:id', function (req, res, next) {
     payments.changePaymentStatus(req.params.id, req.body, function (err, count) {
         let condition = !!req.body.value;
         if (!condition) {
