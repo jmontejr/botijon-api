@@ -325,6 +325,19 @@ Status | Response
 success|`status: 'success', message: 'Returned all products', 'data': output`
 error  |`status: 'error', message: 'There arent products found', 'data': {}`
 
+#### Get All Products per seller
+
+`GET: /products/byseller/:seller_id`
+
+params      | type
+------------|------
+:seller_id  |number
+
+Status | Response
+-------|----------
+success|`status: 'success', message: 'Returned all Products this seller', 'data': output`
+error  |`status: 'error', message: 'There arent products this seller', 'data': {}`
+
 #### Get All Products per type
 
 `GET: /products/pertype/:productType`
