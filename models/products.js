@@ -7,6 +7,9 @@ var Products = {
     getProductById: function (id, callback) {
         return db.query("select * from products where id=?", [id], callback);
     },
+    getProductBySeller: function (seller_id, callback) {
+        return db.query("select * from products where seller_id=?", [seller_id], callback);
+    },
     getProductByDescription: function (description, callback){
         return db.query("select * from products where description=?", [description], callback);
     },

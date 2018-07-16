@@ -41,6 +41,25 @@ router.get('/api/products/:id', function(req, res, next){
     });
 });
 
+router.get('/api/products/byseller/:seller_id', function(req, res, next){
+    products.getProductBySeller(req.params.seller_id, function(err, rows){
+        if(err || (rows.length == 0)){
+            res.json({
+                status: 'error',
+                data: {},
+                message: 'There arent products this seller'
+            });
+        }
+        else{
+            res.json({
+                status: 'success',
+                data: rows,
+                message: 'Returned all Products this seller'
+            });
+        }
+    });
+});
+
 router.get('/api/products/pertype/:productType', function(req, res, next){
     products.getProductPerType(req.params.productType, function(err, rows){
         if(err || (rows.length == 0)){
