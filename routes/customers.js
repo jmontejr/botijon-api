@@ -164,4 +164,34 @@ router.put('/api/customers/changepassword/:id', function (req, res, next) {
     }
 });
 
+router.put('/api/customers/changeaddress/:id', function (req, res, next) {
+    let condition = !!req.body.address_id;
+    if(!condition){
+        res.status(500)
+        .json({
+            status: 'error',
+            data: {},
+            message: 'Cannnot possible update the customer'
+        });
+    }
+    else{
+        customers.changeAddressCustomer(req.params.id, req.body, function (err, count) {
+            if (err || (count.affectedRows == 0)) {
+                res.json({
+                    status: 'error',
+                    data: err,
+                    message: 'Cannot possible update the customer'
+                });
+            }
+            else {
+                res.json({
+                    status: 'success',
+                    data: count,
+                    message: 'Customer update successfully'
+                });
+            }
+        });
+    }
+});
+
 module.exports = router;

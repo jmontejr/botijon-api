@@ -22,6 +22,25 @@ router.get('/api/addresses/', function(req, res, next){
     });
 });
 
+router.get('/api/addresses/:id', function(req, res, next){
+    addresses.getAdressById(req.params.id, function(err, rows) {
+        if (err || (rows.length == 0)){
+            res.json({
+                status: 'error',
+                data: {},
+                message: 'There arent addresses'
+            });
+        }
+        else{
+            res.json({
+                status: 'success',
+                data: rows,
+                message: 'Returned one address'
+            });
+        }
+    });
+});
+
 router.get('/api/addresses/getid/:address', function(req, res, next){
     let condition = JSON.parse(req.params.address);
     let address = condition.address;

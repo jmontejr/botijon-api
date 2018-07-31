@@ -41,6 +41,44 @@ router.get('/api/payments/:id', function (req, res, next) {
     })
 });
 
+router.get('/api/payments/bycustomer/:id', function (req, res, next) {
+    payments.getAllPaymentsByCustomer(req.params.id, function (err, rows) {
+        if (err || (rows.length == 0)) {
+            res.json({
+                status: 'error',
+                data: {},
+                message: 'There arent payments'
+            });
+        }
+        else{
+            res.json({
+                status: 'success',
+                data: rows,
+                message: 'Returned all payment'
+            });
+        }        
+    })
+});
+
+router.get('/api/payments/toseller/:id', function (req, res, next) {
+    payments.getAllPaymentsToSeller(req.params.id, function (err, rows) {
+        if (err || (rows.length == 0)) {
+            res.json({
+                status: 'error',
+                data: {},
+                message: 'There arent payments'
+            });
+        }
+        else{
+            res.json({
+                status: 'success',
+                data: rows,
+                message: 'Returned all payment'
+            });
+        }        
+    })
+});
+
 router.get('/api/payments/typestatus/:payment', function (req, res, next) {
     let condition = JSON.parse(req.params.payment);
     let type = condition.payment_type;

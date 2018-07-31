@@ -24,6 +24,9 @@ var Customers = {
     },
     changePasswordCustomer: function (id, Customer, callback) {
         return db.query("update customers set password=? where id=?", [Customer.password, id], callback);
+    },
+    changeAddressCustomer: function (id, Customer, callback) {
+        return db.query("update customers set address_id=? where id=?", [Customer.address_id, id], callback);
     }
 };
 
