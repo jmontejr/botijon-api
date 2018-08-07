@@ -178,6 +178,26 @@ Status | Response
 success|`status: 'success', message: 'Customer update successfully', 'data': output`
 error  |`status: 'error', message: 'Cannnot possible update the customer', 'data': {}`
 
+#### Customer change address
+
+`PUT: /customers/changeaddress/:id`
+
+params | type
+-------|------
+:id    |number
+
+```
+Body:
+{
+  "address_id": number
+}
+```
+
+Status | Response
+-------|----------
+success|`status: 'success', message: 'Customer update successfully', 'data': output`
+error  |`status: 'error', message: 'Cannnot possible update the customer', 'data': {}`
+
 
 ## Sellers
 
@@ -519,6 +539,19 @@ Status | Response
 success|`status: 'success', message: 'Returned all addresses', 'data': output`
 error  |`status: 'error', message: 'There arent addresses', 'data': {}`
 
+#### Get One Address by Id
+
+`GET: /addresses/:id`
+
+params | type
+-------|------
+:id    |number
+
+Status | Response
+-------|----------
+success|`status: 'success', message: 'Returned one address', 'data': output`
+error  |`status: 'error', message: 'There arent addresses', 'data': {}`
+
 #### Get one address by address, number and cep
 
 `GET: /addresses/getid/:address`
@@ -549,7 +582,9 @@ Body:
 	"city": string,
 	"state": string,
 	"cep": string,
-	"reference_point": string //can be null
+	"reference_point": string //can be null,
+	"latitude": string,
+	"longitude": string
 }
 ```
 
@@ -575,7 +610,9 @@ Body:
 	"city": string,
 	"state": string,
 	"cep": string,
-	"reference_point": string //can be null
+	"reference_point": string //can be null,
+	"latitude": string,
+	"longitude": string
 }
 ```
 
@@ -602,6 +639,23 @@ error  |`status: 'error', message: 'There arent requests found', 'data': {}`
 params | type
 -------|------
 :id    |number
+
+Status | Response
+-------|----------
+success|`status: 'success', message: 'Returned one request', 'data': output`
+error  |`status: 'error', message: 'There arent requests found', 'data': {}`
+
+#### Get One Request of day by Customer
+
+`GET: /requests/getid/:request`
+
+params      | type
+------------|------
+:request    |object json
+
+Example:
+* /requests/getid/{"customer_id":number,"product_id":number}
+	* NOTE: There is a third parameter: the current date. This parameter is already in the query, so no need to worry.
 
 Status | Response
 -------|----------
@@ -690,6 +744,28 @@ Status | Response
 success|`status: 'success', message: 'Returned all payments type and status', 'data': output`
 error  |`status: 'error', message: 'There arent payments', 'data': {}`
 
+`GET: /payments/bycustomer/:id`
+
+params          | type
+----------------|------
+:customer_id    |number
+
+Status | Response
+-------|----------
+success|`status: 'success', message: 'Returned all payment', 'data': output`
+error  |`status: 'error', message: 'There arent payments', 'data': {}`
+
+`GET: /payments/toseller/:id`
+
+params        | type
+--------------|------
+:seller_id    |number
+
+Status | Response
+-------|----------
+success|`status: 'success', message: 'Returned all payment', 'data': output`
+error  |`status: 'error', message: 'There arent payments', 'data': {}`
+
 #### Create a new payment
 
 `POST: /payments/create/`
@@ -700,6 +776,7 @@ Body:
 	"value": double,
 	payment_type: string, //can be "dinheiro" or "cartao"
 	address_id: number,
+	request_id: number,
 	status: string // can be "success", "waiting" or "failed"
 }
 ```
