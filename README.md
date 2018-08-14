@@ -762,6 +762,19 @@ Status | Response
 success|`status: 'success', message: 'Returned all payment', 'data': output`
 error  |`status: 'error', message: 'There arent payments', 'data': {}`
 
+#### Get value total of all payments of a seller
+
+`GET: /payments/valuetotal/:seller_id`
+
+params        | type
+--------------|------
+:seller_id    |number
+
+Status | Response
+-------|----------
+success|`status: 'success', message: 'Returned value total of payments this seller', 'data': output`
+error  |`status: 'error', message: 'There arent payments', 'data': {}`
+
 #### Create a new payment
 
 `POST: /payments/create/`

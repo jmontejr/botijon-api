@@ -79,6 +79,25 @@ router.get('/api/payments/toseller/:seller_id', function (req, res, next) {
     })
 });
 
+router.get('/api/payments/valuetotal/:seller_id', function (req, res, next) {
+    payments.getValueTotalToPaymentsSeller(req.params.seller_id, function (err, rows) {
+        if (err || (rows.length == 0)) {
+            res.json({
+                status: 'error',
+                data: {},
+                message: 'There arent payments'
+            });
+        }
+        else{
+            res.json({
+                status: 'success',
+                data: rows,
+                message: 'Returned value total of payments this seller'
+            });
+        }        
+    })
+});
+
 router.get('/api/payments/typestatus/:payment', function (req, res, next) {
     let condition = JSON.parse(req.params.payment);
     let type = condition.payment_type;

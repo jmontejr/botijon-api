@@ -16,6 +16,9 @@ var Payments = {
     getAllPaymentsToSeller: function (seller_id, callback) {
         return db.query("SELECT * from payments inner join requests on payments.request_id = requests.id inner join products on products.id = requests.product_id and products.seller_id =? inner join addresses on addresses.id = payments.address_id", [seller_id], callback)
     },
+    getValueTotalToPaymentsSeller: function (seller_id, callback) {
+        return db.query("SELECT sum(payments.value) as value_total FROM `payments` inner join requests on payments.request_id = requests.id inner join products on requests.product_id = products.id inner join sellers on sellers.id = products.seller_id and sellers.id = ?", [seller_id], callback)
+    },
     addPayment: function (Payment, callback) {
         return db.query("insert into payments(value, payment_type, address_id, request_id, date, status) values(?,?,?,?,now(),?)", 
         [Payment.value, Payment.payment_type, Payment.address_id, Payment.request_id, Payment.status], callback);
