@@ -13,8 +13,8 @@ var Payments = {
     getAllPaymentsByCustomer: function (customer_id, callback) {
         return db.query("SELECT * from payments, requests WHERE customer_id=? and (requests.date = payments.date) and (requests.id = payments.request_id)", [customer_id], callback)
     },
-    getAllPaymentsToSeller: function (seller_id, address_id, callback) {
-        return db.query("SELECT * from payments inner join requests on payments.request_id = requests.id inner join products on products.id = requests.product_id and products.seller_id =? inner join addresses on addresses.id = ?", [seller_id, address_id], callback)
+    getAllPaymentsToSeller: function (seller_id, callback) {
+        return db.query("SELECT * from payments inner join requests on payments.request_id = requests.id inner join products on products.id = requests.product_id and products.seller_id =? inner join addresses on addresses.id = payments.address_id", [seller_id], callback)
     },
     addPayment: function (Payment, callback) {
         return db.query("insert into payments(value, payment_type, address_id, request_id, date, status) values(?,?,?,?,now(),?)", 

@@ -751,15 +751,11 @@ error  |`status: 'error', message: 'There arent payments', 'data': {}`
 
 #### Get all payments of a seller
 
-`GET: /payments/toseller/:payment`
+`GET: /payments/toseller/:seller_id`
 
 params        | type
 --------------|------
-:payment      |object
-
-Example:  
-* /payments/toseller/{"seller_id":number,"address_id":number}
-  1. /payments/toseller/{"seller_id":1,"address_id":2}
+:seller_id    |number
 
 Status | Response
 -------|----------
