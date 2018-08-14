@@ -579,12 +579,8 @@ Body:
 	"address": string,
 	"number": string or number,
 	"neighborhood": string,
-	"city": string,
-	"state": string,
 	"cep": string,
-	"reference_point": string //can be null,
-	"latitude": string,
-	"longitude": string
+	"reference_point": string //can be null
 }
 ```
 
@@ -607,12 +603,8 @@ Body:
 	"address": string,
 	"number": string or number,
 	"neighborhood": string,
-	"city": string,
-	"state": string,
 	"cep": string,
-	"reference_point": string //can be null,
-	"latitude": string,
-	"longitude": string
+	"reference_point": string //can be null
 }
 ```
 
