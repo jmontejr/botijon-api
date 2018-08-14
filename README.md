@@ -736,6 +736,8 @@ Status | Response
 success|`status: 'success', message: 'Returned all payments type and status', 'data': output`
 error  |`status: 'error', message: 'There arent payments', 'data': {}`
 
+#### Get all payments of a customer
+
 `GET: /payments/bycustomer/:id`
 
 params          | type
@@ -747,11 +749,17 @@ Status | Response
 success|`status: 'success', message: 'Returned all payment', 'data': output`
 error  |`status: 'error', message: 'There arent payments', 'data': {}`
 
-`GET: /payments/toseller/:id`
+#### Get all payments of a seller
+
+`GET: /payments/toseller/:payment`
 
 params        | type
 --------------|------
-:seller_id    |number
+:payment      |object
+
+Example:  
+* /payments/toseller/{"seller_id":number,"address_id":number}
+  1. /payments/toseller/{"seller_id":1,"address_id":2}
 
 Status | Response
 -------|----------

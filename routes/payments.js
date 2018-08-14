@@ -60,8 +60,17 @@ router.get('/api/payments/bycustomer/:id', function (req, res, next) {
     })
 });
 
-router.get('/api/payments/toseller/:id', function (req, res, next) {
-    payments.getAllPaymentsToSeller(req.params.id, function (err, rows) {
+router.get('/api/payments/toseller/:payment', function (req, res, next) {
+    let condition = JSON.parse(req.params.payment);
+    let seller_id = condition.seller_id;
+    let address_id = condition.address_id;
+
+    console.log(condition);
+    console.log(seller_id);
+    console.log(address_id);
+
+
+    payments.getAllPaymentsToSeller(seller_id, address_id, function (err, rows) {
         if (err || (rows.length == 0)) {
             res.json({
                 status: 'error',
